@@ -6,12 +6,20 @@ public class Emitter:MonoBehaviour{
 
     private int currentWave;
 
+    private Manager manager;
+
     IEnumerator Start(){
         if(waves.Length == 0){
             yield break;
         }
 
+        manager = FindObjectOfType<Manager>();
+
         while(true){
+            while(manager.IsPlaying() == false){
+                yield return new WaitForEndOfFrame();
+            }
+
             GameObject wave = (GameObject)Instantiate(waves[currentWave], transform.position, transform.rotation);
 
             wave.transform.parent = transform;

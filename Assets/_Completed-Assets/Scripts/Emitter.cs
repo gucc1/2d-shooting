@@ -21,6 +21,9 @@ namespace CompletedAssets
 			if (waves.Length == 0) {
 				yield break;
 			}
+
+			manager = FindObjectOfType<Manager>();
+
 		
 			// Managerコンポーネントをシーン内から探して取得する
 			manager = FindObjectOfType<Manager> ();

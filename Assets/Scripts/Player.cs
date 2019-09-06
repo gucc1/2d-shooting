@@ -43,6 +43,8 @@ public class Player : MonoBehaviour
             Destroy(c.gameObject);
         }
         if(layerName == "Bullet (Enemy)" || layerName == "Enemy"){
+            // Managerコンポーネントをシーン内から探して取得し、GameOverメソッドを呼び出す
+            FindObjectOfType<Manager>().GameOver();
             spaceship.Explosion();
             Destroy(gameObject);
         }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
 public class Spaceship : MonoBehaviour
 {
     public float speed;
@@ -11,6 +11,12 @@ public class Spaceship : MonoBehaviour
 
     public GameObject explosion;
 
+    private Animator animator;
+
+    void Start(){
+        animator = GetComponent<Animator>();
+    }
+
     public void Explosion(){
         Instantiate(explosion, this.transform.position, this.transform.rotation);
     }
@@ -19,7 +25,7 @@ public class Spaceship : MonoBehaviour
         Instantiate(bullet, origin.position, origin.rotation);
     }
 
-    public void Move(Vector2 direction){
-        GetComponent<Rigidbody2D>().velocity = direction * speed;
+    public Animator GetAnimator(){
+        return animator;
     }
 }
